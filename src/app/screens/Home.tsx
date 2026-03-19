@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import {
   TrendingUp,
   TrendingDown,
@@ -10,6 +11,7 @@ import {
   Users,
   ChevronDown,
   Plus,
+  CreditCard,
 } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
@@ -100,6 +102,23 @@ export function Home() {
         {/* Quick Actions */}
         <div className="px-4 pt-6">
           <h2 className="text-lg font-bold mb-4">Quick Actions</h2>
+          
+          {/* POS Button - Featured */}
+          <Link to="/pos">
+            <Card className="mb-4 p-5 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/30 backdrop-blur-md active:scale-95 transition-transform">
+              <div className="flex items-center gap-4">
+                <div className="p-4 bg-accent rounded-2xl shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                  <CreditCard className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg">Point of Sale</h3>
+                  <p className="text-sm text-muted-foreground">Start selling now</p>
+                </div>
+                <div className="text-accent">→</div>
+              </div>
+            </Card>
+          </Link>
+
           <div className="grid grid-cols-4 gap-3 mb-6">
             <button className="flex flex-col items-center gap-2 p-3 bg-card/60 backdrop-blur-md border border-border rounded-2xl active:scale-95 transition-transform">
               <div className="p-3 bg-accent/10 rounded-xl">

@@ -18,11 +18,19 @@ import {
   Settings2,
   DollarSign,
   Wallet,
+  CreditCard,
 } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { Link } from "react-router";
 
 const menuSections = [
+  {
+    title: "Sales & POS",
+    items: [
+      { label: "Point of Sale", icon: CreditCard, color: "bg-accent/10 text-accent", path: "/pos" },
+      { label: "Sales Dashboard", icon: ShoppingBag, color: "bg-green-500/10 text-green-400", path: "/sales" },
+    ],
+  },
   {
     title: "Finance & Accounting",
     items: [

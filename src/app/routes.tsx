@@ -10,6 +10,8 @@ import { Settings } from "./screens/Settings";
 import { WorkOrderDetail } from "./screens/WorkOrderDetail";
 import { SaleDetail } from "./screens/SaleDetail";
 import { ProductDetail } from "./screens/ProductDetail";
+import { POS } from "./screens/POS";
+import { TransactionSuccess } from "./screens/TransactionSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
   {
     path: "/settings",
     Component: Settings,
+  },
+  {
+    path: "/pos",
+    Component: POS,
+  },
+  {
+    path: "/transaction-success",
+    Component: TransactionSuccess,
   },
   {
     path: "/manufacturing/work-orders/:id",
