@@ -12,8 +12,28 @@ import { SaleDetail } from "./screens/SaleDetail";
 import { ProductDetail } from "./screens/ProductDetail";
 import { POS } from "./screens/POS";
 import { TransactionSuccess } from "./screens/TransactionSuccess";
+import { Login } from "./screens/Login";
+import { Register } from "./screens/Register";
+import { Logout } from "./screens/Logout";
+import { ForgotPassword } from "./screens/ForgotPassword";
 
 export const router = createBrowserRouter([
+  {
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
+  },
+  {
+    path: "/forgot-password",
+    Component: ForgotPassword,
+  },
+  {
+    path: "/logout",
+    Component: Logout,
+  },
   {
     path: "/",
     Component: MobileLayout,

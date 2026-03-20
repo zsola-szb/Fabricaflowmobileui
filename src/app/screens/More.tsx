@@ -21,7 +21,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Card } from "../components/ui/card";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const menuSections = [
   {
@@ -58,6 +58,8 @@ const menuSections = [
 ];
 
 export function More() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -130,7 +132,10 @@ export function More() {
               <span className="flex-1 text-left font-medium">Settings</span>
               <ChevronRight className="w-5 h-5 text-muted-foreground" />
             </Link>
-            <button className="w-full flex items-center gap-3 p-4 active:bg-red-500/5 transition-colors">
+            <button
+              className="w-full flex items-center gap-3 p-4 active:bg-red-500/5 transition-colors"
+              onClick={() => navigate("/logout")}
+            >
               <div className="p-2.5 rounded-xl bg-red-500/10 text-red-400">
                 <LogOut className="w-5 h-5" />
               </div>
