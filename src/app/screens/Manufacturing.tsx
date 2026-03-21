@@ -21,6 +21,7 @@ import {
 import { Card } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Badge } from "../components/ui/badge";
+import { AddPlanModal } from "../components/AddPlanModal";
 
 const workOrders = [
   {
@@ -92,6 +93,7 @@ const quickActions = [
 export function Manufacturing() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isAddPlanModalOpen, setIsAddPlanModalOpen] = useState(false);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -462,9 +464,15 @@ export function Manufacturing() {
       </div>
 
       {/* Floating Action Button */}
-      <button className="fixed bottom-24 right-6 w-14 h-14 bg-accent shadow-[0_0_20px_rgba(249,115,22,0.4)] rounded-full flex items-center justify-center active:scale-95 transition-all hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] z-40">
+      <button
+        onClick={() => setIsAddPlanModalOpen(true)}
+        className="fixed bottom-24 right-6 w-14 h-14 bg-accent shadow-[0_0_20px_rgba(249,115,22,0.4)] rounded-full flex items-center justify-center active:scale-95 transition-all hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] z-40"
+      >
         <Plus className="w-6 h-6 text-white" />
       </button>
+
+      {/* Add Plan Modal */}
+      <AddPlanModal isOpen={isAddPlanModalOpen} onClose={() => setIsAddPlanModalOpen(false)} />
     </div>
   );
 }
