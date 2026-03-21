@@ -17,11 +17,13 @@ import {
   StopCircle,
   Search,
   Filter,
+  AlertTriangle,
 } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Badge } from "../components/ui/badge";
 import { AddPlanModal } from "../components/AddPlanModal";
+import { RecordScrapModal } from "../components/RecordScrapModal";
 
 const workOrders = [
   {
@@ -94,6 +96,7 @@ export function Manufacturing() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isAddPlanModalOpen, setIsAddPlanModalOpen] = useState(false);
+  const [isRecordScrapModalOpen, setIsRecordScrapModalOpen] = useState(false);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -231,6 +234,18 @@ export function Manufacturing() {
 
       {/* Main Content */}
       <div className="px-4 -mt-16">
+        {/* Record Scrap Button */}
+        <button
+          onClick={() => setIsRecordScrapModalOpen(true)}
+          className="w-full mb-4 p-4 bg-gradient-to-r from-red-500/90 to-red-600/90 backdrop-blur-md border border-red-400/30 rounded-2xl shadow-lg hover:shadow-[0_0_30px_rgba(239,68,68,0.4)] active:scale-95 transition-all flex items-center justify-center gap-3 text-white"
+        >
+          <AlertTriangle className="w-6 h-6" />
+          <div className="text-left">
+            <p className="font-bold text-lg">Record Scrap</p>
+            <p className="text-xs text-white/80">Track production waste & defects</p>
+          </div>
+        </button>
+
         {/* Quick Actions */}
         <Card className="p-4 rounded-2xl backdrop-blur-md border border-border mb-6">
           <h3 className="font-bold mb-3">Quick Actions</h3>
@@ -473,6 +488,9 @@ export function Manufacturing() {
 
       {/* Add Plan Modal */}
       <AddPlanModal isOpen={isAddPlanModalOpen} onClose={() => setIsAddPlanModalOpen(false)} />
+
+      {/* Record Scrap Modal */}
+      <RecordScrapModal isOpen={isRecordScrapModalOpen} onClose={() => setIsRecordScrapModalOpen(false)} />
     </div>
   );
 }

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
+import { RecordScrapModal } from "../components/RecordScrapModal";
 
 const stages = [
   { name: "Planning", status: "completed", date: "Mar 18, 09:00" },
@@ -37,6 +38,7 @@ export function WorkOrderDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRecordScrapModalOpen, setIsRecordScrapModalOpen] = useState(false);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -142,9 +144,12 @@ export function WorkOrderDetail() {
             <Play className="w-5 h-5 mx-auto mb-1" />
             <span className="text-xs">Start</span>
           </button>
-          <button className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 font-medium active:scale-95 transition-all">
-            <StopCircle className="w-5 h-5 mx-auto mb-1" />
-            <span className="text-xs">Pause</span>
+          <button
+            onClick={() => setIsRecordScrapModalOpen(true)}
+            className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 font-medium active:scale-95 transition-all"
+          >
+            <AlertTriangle className="w-5 h-5 mx-auto mb-1" />
+            <span className="text-xs">Scrap</span>
           </button>
           <button className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 font-medium active:scale-95 transition-all">
             <Eye className="w-5 h-5 mx-auto mb-1" />
@@ -247,6 +252,9 @@ export function WorkOrderDetail() {
           Mark Stage Complete
         </button>
       </div>
+
+      {/* Record Scrap Modal */}
+      <RecordScrapModal isOpen={isRecordScrapModalOpen} onClose={() => setIsRecordScrapModalOpen(false)} />
     </div>
   );
 }
