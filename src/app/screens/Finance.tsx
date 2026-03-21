@@ -12,6 +12,7 @@ import {
 import { Card } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Badge } from "../components/ui/badge";
+import { AddExpenseModal } from "../components/AddExpenseModal";
 
 const expenses = [
   { id: 1, category: "Office Supplies", amount: "Br 350.00", date: "Mar 18, 2026", status: "Paid" },
@@ -33,6 +34,8 @@ const reports = [
 ];
 
 export function Finance() {
+  const [isAddExpenseOpen, setIsAddExpenseOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -196,9 +199,15 @@ export function Finance() {
       </div>
 
       {/* Floating Action Button */}
-      <button className="fixed bottom-24 right-6 w-14 h-14 bg-accent shadow-[0_0_20px_rgba(249,115,22,0.4)] rounded-full flex items-center justify-center active:scale-95 transition-all hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] z-40">
+      <button
+        onClick={() => setIsAddExpenseOpen(true)}
+        className="fixed bottom-24 right-6 w-14 h-14 bg-accent shadow-[0_0_20px_rgba(249,115,22,0.4)] rounded-full flex items-center justify-center active:scale-95 transition-all hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] z-40"
+      >
         <Plus className="w-6 h-6 text-white" />
       </button>
+
+      {/* Add Expense Modal */}
+      <AddExpenseModal isOpen={isAddExpenseOpen} onClose={() => setIsAddExpenseOpen(false)} />
     </div>
   );
 }
