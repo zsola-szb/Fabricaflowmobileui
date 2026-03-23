@@ -17,6 +17,7 @@ import { Register } from "./screens/Register";
 import { Logout } from "./screens/Logout";
 import { ForgotPassword } from "./screens/ForgotPassword";
 import { Packaging } from "./screens/Packaging";
+import { Purchases } from "./screens/Purchases";
 
 export const router = createBrowserRouter([
   {
@@ -78,5 +79,9 @@ export const router = createBrowserRouter([
   {
     path: "/packaging",
     Component: Packaging,
+  },
+  {
+    path: "/purchases",
+    Component: Purchases,
   },
 ]);
