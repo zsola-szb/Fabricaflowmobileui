@@ -24,6 +24,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Badge } from "../components/ui/badge";
 import { AddPlanModal } from "../components/AddPlanModal";
 import { RecordScrapModal } from "../components/RecordScrapModal";
+import { ReportsModal } from "../components/ReportsModal";
 
 const workOrders = [
   {
@@ -97,6 +98,7 @@ export function Manufacturing() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isAddPlanModalOpen, setIsAddPlanModalOpen] = useState(false);
   const [isRecordScrapModalOpen, setIsRecordScrapModalOpen] = useState(false);
+  const [isReportsModalOpen, setIsReportsModalOpen] = useState(false);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -252,6 +254,23 @@ export function Manufacturing() {
           <div className="grid grid-cols-3 gap-3">
             {quickActions.map((action) => {
               const Icon = action.icon;
+              
+              // Handle Reports separately to open modal
+              if (action.label === "Reports") {
+                return (
+                  <button
+                    key={action.label}
+                    onClick={() => setIsReportsModalOpen(true)}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-accent/5 active:scale-95 transition-all"
+                  >
+                    <div className={`p-3 rounded-xl ${action.color}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-medium text-center">{action.label}</span>
+                  </button>
+                );
+              }
+              
               return (
                 <Link
                   key={action.label}
@@ -491,6 +510,9 @@ export function Manufacturing() {
 
       {/* Record Scrap Modal */}
       <RecordScrapModal isOpen={isRecordScrapModalOpen} onClose={() => setIsRecordScrapModalOpen(false)} />
+
+      {/* Reports Modal */}
+      <ReportsModal isOpen={isReportsModalOpen} onClose={() => setIsReportsModalOpen(false)} />
     </div>
   );
 }
