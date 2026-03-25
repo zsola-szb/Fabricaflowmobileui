@@ -18,6 +18,8 @@ import { Logout } from "./screens/Logout";
 import { ForgotPassword } from "./screens/ForgotPassword";
 import { Packaging } from "./screens/Packaging";
 import { Purchases } from "./screens/Purchases";
+import { Contacts } from "./screens/Contacts";
+import { ContactDetails } from "./screens/ContactDetails";
 
 export const router = createBrowserRouter([
   {
@@ -83,5 +85,13 @@ export const router = createBrowserRouter([
   {
     path: "/purchases",
     Component: Purchases,
+  },
+  {
+    path: "/contacts",
+    Component: Contacts,
+  },
+  {
+    path: "/contacts/:id",
+    Component: ContactDetails,
   },
 ]);
