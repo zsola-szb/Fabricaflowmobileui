@@ -20,6 +20,8 @@ import { Packaging } from "./screens/Packaging";
 import { Purchases } from "./screens/Purchases";
 import { Contacts } from "./screens/Contacts";
 import { ContactDetails } from "./screens/ContactDetails";
+import { Stock } from "./screens/Stock";
+import { StockDetail } from "./screens/StockDetail";
 
 export const router = createBrowserRouter([
   {
@@ -93,5 +95,13 @@ export const router = createBrowserRouter([
   {
     path: "/contacts/:id",
     Component: ContactDetails,
+  },
+  {
+    path: "/stock",
+    Component: Stock,
+  },
+  {
+    path: "/stock/:id",
+    Component: StockDetail,
   },
 ]);
